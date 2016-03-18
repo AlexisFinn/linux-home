@@ -1,0 +1,68 @@
+background yes
+use_xft yes
+xftfont sans:size=8
+xftalpha 0.5
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour black
+double_buffer yes
+minimum_size 230 5
+maximum_width 250
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_shade_color 000000
+default_outline_color d9d7d6
+default_color 0077BB
+alignment tl
+gap_x 12
+gap_y 12
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+color1 red
+color2 gray
+##############################################
+#  Output
+##############################################
+TEXT
+
+${color2}
+${image /home/alexis/Pictures/ob3-logo.png -s 70x70}
+${color white}${voffset -40}${font LCDMono2:size=36}${alignr}${time %R}${font LCDMono2:size=10}${font}
+${font LCDMono2:size=20}${alignr}${time %d.%m.%y}${font LCDMono2:size=10}${font}
+${color}
+
+${font size=7}${color slate grey}INFO $hr${color white}${font }
+
+Composition: ${alignr}${if_match "${exec pidof compton}" != ""}${color green}ON${else}${color red}OFF${endif}${color white}
+Apache: ${alignr}${if_match "${exec pidof httpd}" != ""}${color green}ON${else}${color red}OFF${endif}${color white}
+Mysql: ${alignr}${if_match "${exec pidof mysqld}" != ""}${color green}ON${else}${color red}OFF${endif}${color white}
+Cntlm: ${alignr}${if_match "${exec pidof cntlm}" != ""}${color green}ON${else}${color red}OFF${endif}${color white}
+Cron: ${alignr}${if_match "${exec pidof crond}" != ""}${color green}ON${else}${color red}OFF${endif}${color white}
+Kernel: ${alignr}$kernel ($machine)
+Uptime: ${alignr}$uptime
+
+${font size=7}${color slate gray}SHORTCUT KEYS $hr${color white}${font}
+
+Super+space$alignr Main Menu
+Super+t$alignr Terminal
+Super+f$alignr File Manager
+Super+e$alignr Editor
+Super+w$alignr Web Browser
+Super+q$alignr Force Quit
+Super+r$alignr Read the DOC
+Super+a$alignr Toggle Maximize
+Super+h$alignr Toggle Horizontal
+Super+v$alignr Toggle Vertical
+Super+c$alignr Move to Center
+Super+Arrow$alignr Move
+Alt+F3$alignr Dmenu
+Alt+Super+Arrow$alignr Resize
+Ctrl+space$alignr App Launcher

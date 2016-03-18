@@ -1,0 +1,74 @@
+alignment top_right
+double_buffer yes
+gap_x 12
+gap_y 12
+update_interval 2.0
+background yes
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_class conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+minimum_size 230 5
+maximum_width 250
+draw_borders no
+default_color 0077BB
+use_xft yes
+xftalpha 0.5
+xftfont Sans:size=8
+TEXT
+
+${image /home/alexis/Pictures/ArchlinuxLogo2.png -s 240x70}
+
+${voffset 50}${font size=7}${color slate grey}CPU Usage $hr${color white}${font }
+
+CPU1 ${alignr}${cpu cpu1}%
+${cpugraph cpu1 16, 250}
+CPU2 ${alignr}${cpu cpu2}%
+${cpugraph cpu2 16, 250}
+CPU3 ${alignr}${cpu cpu3}%
+${cpugraph cpu3 16, 250}
+CPU4 ${alignr}${cpu cpu4}%
+${cpugraph cpu4 16, 250}
+
+${font size=7}${color slate grey}Ram Usage $hr${color white}${font }
+
+RAM ${alignr}$mem/$memmax
+${membar 6, 250}
+
+Swap ${alignr}$swap/$swapmax
+${swapbar 6, 250}
+
+${font size=7}${color slate grey}Filesystem $hr${color white}${font }
+
+/ ${alignr}${fs_free /}
+${fs_bar 6, 250 /}
+
+${font size=7}${color slate grey}Top CPU Tasks $hr${color white}${font }
+
+${color #ddaa00}${top name 1}${alignr}${top cpu 1}%${color white}
+${top name 2}${alignr}${top cpu 2}%
+${top name 3}${alignr}${top cpu 3}%
+${top name 4}${alignr}${top cpu 4}%
+${top name 5}${alignr}${top cpu 5}%
+
+${font size=7}${color slate grey}Top RAM Tasks  $hr${color white}${font }
+
+${color #ddaa00}${top_mem name 1}${alignr}${top_mem mem 1}%${color white}
+${top_mem name 2}${alignr}${top_mem mem 2}%
+${top_mem name 3}${alignr}${top_mem mem 3}%
+${top_mem name 4}${alignr}${top_mem mem 4}%
+${top_mem name 5}${alignr}${top_mem mem 5}%
+
+${font size=7}${color slate grey}Network $hr${color white}${font }
+
+IP (Lan): $alignr${addr enp0s3}
+#IP (Public): $alignr${execi 600 wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'}
+Total Down $alignr${totaldown enp0s3}
+Total Up   $alignr${totalup enp0s3}
+
+Download ${alignr}${downspeed enp0s3}
+${downspeedgraph enp0s3}
+
+Upload ${alignr}${upspeed enp0s3}
+${upspeedgraph enp0s3}
