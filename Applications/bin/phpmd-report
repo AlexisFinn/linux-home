@@ -1,0 +1,22 @@
+#! /bin/bash
+
+phpmd_path=phpmd
+format=html
+conf=/srv/http/ewifi/dev/build/phpmd.xml
+
+if hash $phpmd_path 2>/dev/null; then
+    if [ -f $conf ]; then
+        if [ -z "$1" ]; then
+            echo "Aucun chemin specifié, utilisation: phpmd-report [REPERTOIRE]"
+            echo "REPERTOIRE: chemin dans lequel executer phpmd."
+        else
+            $phpmd_path $1 $format $conf > $HOME/phpmd.report.html
+            firefox $HOME/phpmd.report.html &
+        fi
+    else
+        echo "$conf non trouvé: Veuiller configurer le chemin vers le fichier de configuration phpmd.xml en editant ce fichier"
+    fi
+else
+    echo "$phpmd_path non trouvé: Veuiller configurer le chemin vers phpmd en editant ce fichier"
+fi
+
