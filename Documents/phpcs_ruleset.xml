@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<ruleset name="Custom">
+    <description>Custom ruleset</description>
+
+    <!-- <rule ref="Generic.ControlStructures.InlineControlStructure"/> -->
+    <!-- <rule ref="Generic.Formatting.SpaceAfterCast"/> -->
+    <!-- <rule ref="Generic.Functions.CallTimePassByReference"/> -->
+
+    <!-- <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+    <rule ref="Squiz.ControlStructures.ControlSignature"/>
+    <rule ref="Squiz.ControlStructures.ForEachLoopDeclaration"/>
+    <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
+    <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+    <rule ref="Squiz.PHP.CommentedOutCode">
+        <properties>
+            <property name="maxPercentage" value="10"/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.Scope.MemberVarScope"/>
+    <rule ref="Squiz.Scope.MethodScope"/> -->
+
+    <!-- We provide our own subclass of PEAR's ClassComment and FunctionComment sniff, but these will do: -->
+    <!-- <rule ref="PEAR.Commenting.InlineComment"/> -->
+
+
+    <!-- There should not be any code in the bundle Resources directory. -->
+    <exclude-pattern>*/Resources/*</exclude-pattern>
+    <rule ref="Symfony2">
+        <!-- but exclude their code analyzer -->
+        <exclude name="Zend.Debug.CodeAnalyzer"/>
+
+        <!-- covered by Squiz ControlSignature, which enforces try/catch as well -->
+        <exclude name="PEAR.ControlStructures.ControlSignature"/>
+
+        <exclude name="PEAR.Commenting.FunctionComment"/>
+        <exclude name="PEAR.Commenting.FileComment"/>
+        <exclude name="PEAR.Commenting.ClassComment"/>
+
+        <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+        <exclude name="Zend.NamingConventions.ValidVariableName.ContainsNumbers"/>
+
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterCloseBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+        <!-- do not check line length -->
+        <exclude name="Generic.Files.LineLength"/>
+
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+        <exclude name="Symfony2.Commenting.FunctionComment"/>
+        <exclude name="Symfony2.Commenting.ClassComment"/>
+
+    </rule>
+</ruleset>
