@@ -1,0 +1,13 @@
+*.pem
+ws_authentication.yml
+config_prod.yml
+node
+node_modules
+parameters.yml
+app/cache/*
+app/logs/*
+web/*
+mep.sh
+rsync_exclude_application_list
+rsync_exclude_web_list
+src/SSD/DashboardBundle/Resources/views/MailTemplates
