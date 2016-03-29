@@ -1,0 +1,47 @@
+[user]
+	email = alexis.finn@modisfrance.fr
+    name = Alexis Finn
+[color]
+    ui = true
+    status = true
+    diff = true
+    branch = true
+    interactive = true
+    pager = true
+[core]
+    autocrlf = input
+    editor = nano
+    filemode = false
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    fc = fetch
+    mg = merge --no-ff
+    pl = pull
+    ps = push
+    unstage = reset HEAD --
+    lg = log --graph
+    last = log -1 HEAD
+    unmodify = checkout --
+    cf = cat-file -p
+    lgp = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset%s %Cblue(%an)%Creset %Cgreen(%cd - %cr)%Creset' --abbrev-commit --date=local
+    trackbranch = branch --set-upstream
+    pushtrack = push -u
+    files = diff --name-only
+[diff]
+	tool = diffuse
+[merge]
+	tool = diffuse
+[http]
+	#proxy = http://127.0.0.1:3128
+[credential]
+	helper = cache --timeout=28800
+[push]
+      	default = simple
+[gui]
+	spellingdictionary = none
+	tabsize = 4
+	fontui = -family \"Source Code Pro\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Source Code Pro for Powerline\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
