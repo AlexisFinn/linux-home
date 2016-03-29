@@ -1,0 +1,20 @@
+adapter: sftp
+host:
+username:
+password:
+path: /home/samsung/website/
+exclude:
+    - config_deploy_preprod.yml
+    - deploy.sh
+    - node/
+    - node_modules/
+    - vendor/
+    - npm
+    - app/gencss.sh
+    - app/var/jwt/public.pem
+    - app/var/jwt/private.pem
+    - web/app_dev.php
+    - web/config.php
+    - web/css/global.css
+    - web/js/npm.js
+    - src/SSD/DashboardBundle/Resources/views/MailTemplates/
