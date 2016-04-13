@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pid=$(pidof $1)
+
+if [[ $pid = "" ]]
+then
+	echo '<span foreground="#ff6666">OFF</span>';
+else
+	echo '<span foreground="#80ff80">ON</span>'
+fi
