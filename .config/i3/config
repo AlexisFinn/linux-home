@@ -13,6 +13,7 @@ workspace 3 output VGA-1
 workspace 4 output VGA-1
 
 
+
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -21,7 +22,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Source code pro 10
+font xft:Source Code Pro for Powerline 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -151,8 +152,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # scratchpad
-#bindsym $mod+F1 move scratchpad
-#bindsym F1 scratchpad show
+#bindsym $mod+p move scratchpad
+for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
+
 
 # border changing
 bindsym $mod+b border toggle
@@ -230,7 +232,7 @@ exec_always --no-startup-id /home/alexis/Applications/bin/setxrandr1980.sh
 #Rofi launcher
 bindsym $mod+w exec "rofi -show window -font 'Source code pro 10' -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#000000' -o 85"
 bindsym $mod+x exec "rofi -show run -font 'Source code pro 10' -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#000000' -o 85"
-#bindsym $mod+t rofi -show ssh
+bindsym $mod+y exec "rofi -show ssh -font 'Source code pro 10' -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#000000' -o 85"
 
 # Graphical app menu (menutray)
 exec_always --no-startup-id "menutray -i"
@@ -239,3 +241,5 @@ exec_always --no-startup-id "menutray -i"
 exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"
 bindsym $mod+k exec "anamnesis -b --brief"
 
+# Terminal anywhere
+bindsym $mod+t exec "xfce4-terminal --drop-down --hide-menubar --hide-toolbar"
