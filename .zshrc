@@ -1,7 +1,7 @@
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alexis/.gem/ruby/2.2.0/bin:/home/alexis/PhpStorm-139.1348/bin:/srv/http/vendor/phpmd/phpmd/src/bin:/srv/http/vendor/squizlabs/php_codesniffer/scripts:/home/alexis/.composer/vendor/bin:/home/alexis/Applications/bin"
 
 # Load Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #if [[ -r /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
 #    source /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -28,7 +28,7 @@ antigen bundle ssh-agent # Launch ssh-agent
 
 # Syntax highlighting bundle.
 # ALREADY INSTALLED AND LOADED VIA PACMAN/ARCHLINUX
-# antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 # antigen theme funky
@@ -48,7 +48,7 @@ setopt correct
 # Set custom aliases
 alias c="clear"
 alias zconf="gedit /home/alexis/.zshrc"
-alias sf="/srv/http/SamsungShopDisplay/app/console"
+alias sf="/home/alexis/EDF/rosie/app/console"
 alias lock="i3lock -te --image=/home/alexis/Pictures/leftright3840x1080.png"
 alias conkyr="gedit /home/alexis/.conkyrc_right"
 alias conkyl="gedit /home/alexis/.conkyrc_left"
