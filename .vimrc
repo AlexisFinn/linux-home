@@ -49,20 +49,20 @@ Plugin 'kchmck/vim-coffee-script'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
-"Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 " Easily surround chunks of text
 "Plugin 'tpope/vim-surround'
 " Align CSV files at commas, align Markdown tables, and more
 "Plugin 'godlygeek/tabular'
 " Automaticall insert the closing HTML tag
-"Plugin 'HTML-AutoCloseTag'
+Plugin 'HTML-AutoCloseTag'
 " Make tmux look like vim-airline (read README for extra instructions)
 "Plugin 'edkolev/tmuxline.vim'
 " All the other syntax plugins I use
 "Plugin 'ekalinin/Dockerfile.vim'
 "Plugin 'digitaltoad/vim-jade'
 "Plugin 'tpope/vim-liquid'
-"Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'cakebaker/scss-syntax.vim'
 
 call vundle#end()
 
@@ -106,7 +106,7 @@ set laststatus=2
 "     https://github.com/abertsch/Menlo-for-Powerline
 " download all the .ttf files, double-click on them and click "Install"
 " Finally, uncomment the next line
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 " Show PASTE if in paste mode
 let g:airline_detect_paste=1

@@ -161,6 +161,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+F12 exec "i3lock -te --image=/home/alexis/Images/archnerd.png"
 # scratchpad
 #bindsym $mod+p move scratchpad
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
@@ -242,6 +243,8 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 # Configure arandr
 exec_always --no-startup-id /home/alexis/Applications/bin/setArandr.sh
 
+# Turn on numlock
+exec_always --no-startup-id "numlockx on"
 #Rofi launcher
 #bindsym $mod+w exec "rofi -show window -font 'Source code pro 10' -fg '#505050' -bg '#000000' -hlfg '#ffb964' -hlbg '#000000' -o 85"
 bindsym $mod+x exec "rofi -show run -sidebar-mode -font 'Fira code 12' -o 85"
@@ -251,7 +254,7 @@ bindsym $mod+x exec "rofi -show run -sidebar-mode -font 'Fira code 12' -o 85"
 exec --no-startup-id dunst
 
 # Graphical app menu (menutray)
-exec_always --no-startup-id "menutray -i"
+exec --no-startup-id "menutray -i"
 
 # anamnesis clipboard manager
 #exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"

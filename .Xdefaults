@@ -1,0 +1,96 @@
+########################
+#
+#  Urxvt Section
+#
+###################################
+URxvt.geometry:              80x25
+URxvt.inheritPixmap:         true
+URxvt.reverseVideo:          false
+URxvt.tintColor:             #ffffff
+URxvt.shading:               20             !trans=100, 0=opaque
+URxvt.fading:                10             !term unfocus
+URxvt*font:                  xft:Monospace-15:antialias=true
+URxvt.boldFont:              xft:Monospace-15:bold
+URxvt.scrollBar:             false
+URxvt.scrollBar_floating:    true
+URxvt.scrollBar_right:       true
+URxvt.scrollColor:           green
+URxvt.scrollstyle:           xterm
+URxvt.saveLines:             5500
+URxvt.cursorColor:           #00ff00
+URxvt.cursorBlink:           true
+URxvt.colorBD:               white
+# Onglets
+URxvt.perl-ext:              tabbed
+URxvt.tabbed.tabbar-fg:      0
+URxvt.tabbed.tabbar-bg:      2
+URxvt.tabbed.tab-fg:         7
+URxvt.tabbed.tab-bg:         0
+ 
+# Pour ne pas avoir de bordures
+#URxvt*borderLess:            true
+ 
+# Pour avoir le marquage des urls et les ouvrir avec FF
+#URxvt.perl-ext-common: default,digital-clock,matcher
+URxvt.perl-ext-common:       default,matcher
+URxvt.urlLauncher:           firefox
+#couleur des urls
+URxvt.colorBD:               3
+ 
+# Couleurs psychédéliquoblankoïques
+URxvt.background:            #000000
+URxvt.foreground:            #00ff00
+#URxvt*color0: #101010
+#URxvt*color1: #f13a21
+#URxvt*color2: #93f91d
+#URxvt*color3: #ffd00a
+URxvt*color4: #3465a4
+URxvt*color5: #75507b
+URxvt*color6: #06989a
+#URxvt*color7: #f2f2f2
+#URxvt*color8: #1d202f
+URxvt*color9: #ef2929
+URxvt*color10: #8ae234
+URxvt*color11: #fce94f
+URxvt*color12: #729eca
+URxvt*color13: #ad7fa8
+#URxvt*color14: #4bb8fd
+URxvt*color15: #eeeeec
+
+###############ALT
+
+URxvt*background:       rgba:0000/0000/0000/dddd
+URxvt*color0:   #101010
+URxvt*color1:   #f13a21
+URxvt*color2:   #93f91d
+URxvt*color3:   #ffd00a
+URxvt*color4:   #004f9e
+URxvt*color5:   #ec0048
+URxvt*color6:   #2aa7e7
+URxvt*color7:   #f2f2f2
+URxvt*color8:   #1d202f
+URxvt*color9:   #ff361e
+URxvt*color10:  #ffc005
+URxvt*color11:  #93ff00
+URxvt*color12:  #0071ff
+URxvt*color13:  #ef0051
+URxvt*color14:  #4bb8fd
+URxvt*color15:  #a020f0
+URxvt*cursorColor:      white
+URxvt*depth:    32
+URxvt*font:     xft:Bitstream Vera Sans Mono:style=Regular:pixelsize=13:antialias=true
+URxvt*foreground:       #f2f2f2
+URxvt*geometry: 74x27
+URxvt*keysym.End:       \033[8~
+URxvt*keysym.Home:      \033[7~
+URxvt*saveLines:        10000
+URxvt*scrollBar:        true
+URxvt*scrollBar_floating:       true
+URxvt*scrollBar_right:  true
+URxvt*scrollColor:      #c2dd5a
+URxvt*scrollstyle:      plain
+URxvt*scrollTtyOutput:  false
+URxvt*scrollWithBuffer: false
+URxvt*termName: xterm
+URxvt*transparent: true
+URxvt*shading: 20
