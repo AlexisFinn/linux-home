@@ -25,6 +25,12 @@ antigen bundle djui/alias-tips # Alias reminder when launching a command that is
 antigen bundle arialdomartini/oh-my-git #Cool git theme
 antigen bundle archlinux # Aliases for pacman and yaourt (if installed)
 antigen bundle ssh-agent # Launch ssh-agent
+antigen bundle history # aliases for showing and searching history
+antigen bundle lol # Some funny aliases (cf https://gist.github.com/norova/848213) 
+antigen bundle systemd # Aliases for systemctl functions
+antigen bundle tig # Aliases for tig
+antigen bundle sudo # Esc twice to add sudo in fornt of any command
+antigen bundle web-search # literally google things for command-line
 
 # Syntax highlighting bundle.
 # ALREADY INSTALLED AND LOADED VIA PACMAN/ARCHLINUX
@@ -38,6 +44,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen theme avit
 # antigen theme junkfood
 antigen theme ys
+# antigen theme bullet-train
+# antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Tell antigen that you're done.
 antigen apply
@@ -56,3 +64,7 @@ alias conkyl="gedit /home/alexis/.conkyrc_left"
 alias logout="i3-msg exit"
 alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
+alias lolll="ls -al | lolcat"
+
+ddate | lolcat
+cowfortune

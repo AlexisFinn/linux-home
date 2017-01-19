@@ -166,7 +166,6 @@ bindsym $mod+F12 exec "i3lock -te --image=/home/alexis/Images/archnerd.png"
 #bindsym $mod+p move scratchpad
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 
-
 # border changing
 bindsym $mod+b border toggle
 
@@ -201,7 +200,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         output DP-0
-        font pango:Hack 10 
+        font pango:Hack 10
         #mode dock
         modifier $mod
 	status_command i3blocks
@@ -262,3 +261,7 @@ exec --no-startup-id "menutray -i"
 
 # Terminal anywhere
 #bindsym $mod+t exec "xfce4-terminal --drop-down --hide-menubar --hide-toolbar"
+
+# Volume control PS: This doesn't seem to work
+bindsym X86AudioLowerVolume exec /home/alexis/bin/Volume-Down
+bindsym X86AudioRaiseVolume exec /home/alexis/bin/Volume-Up
