@@ -161,7 +161,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Lock screen
 bindsym $mod+F12 exec "i3lock -te --image=/home/alexis/Images/archnerd.png"
+
+# Vim Cheat-sheet
+bindsym $mod+F11 workspace 4; exec "xpdf -fullscreen /home/alexis/Documents/vim_cheat_sheet_for_programmers_screen.pdf"
+
 # scratchpad
 #bindsym $mod+p move scratchpad
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
@@ -263,5 +268,5 @@ exec --no-startup-id "menutray -i"
 #bindsym $mod+t exec "xfce4-terminal --drop-down --hide-menubar --hide-toolbar"
 
 # Volume control PS: This doesn't seem to work
-bindsym X86AudioLowerVolume exec /home/alexis/bin/Volume-Down
-bindsym X86AudioRaiseVolume exec /home/alexis/bin/Volume-Up
+bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
+bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
