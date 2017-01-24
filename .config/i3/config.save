@@ -164,6 +164,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Lock screen
 bindsym $mod+F12 exec "i3lock -te --image=/home/alexis/Images/archnerd.png"
 
+# Show vim cheat-sheet
+bindsym $mod+F11 exec "xpdf --fulscreen /home/alexis/Documents/ 
+
+
 # scratchpad
 #bindsym $mod+p move scratchpad
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
@@ -242,7 +246,7 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # Configure arandr
-exec_always --no-startup-id /home/alexis/bin/setArandr.sh
+exec_always --no-startup-id /home/alexis/Applications/bin/setArandr.sh
 
 # Turn on numlock
 exec_always --no-startup-id "numlockx on"
@@ -257,13 +261,6 @@ exec --no-startup-id dunst
 # Graphical app menu (menutray)
 exec --no-startup-id "menutray -i"
 
-# Auto-start vim cheat-sheet in workspace 10
-assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
-workspace 10 output DP-0
-exec --no-startup-id "xpdf -fullscreen /home/alexis/Documents/vim_cheatsheet.pdf"
-bindsym F10 workspace 10
-
-
 # anamnesis clipboard manager
 #exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"
 #bindsym $mod+k exec "anamnesis -b --brief"
@@ -272,5 +269,5 @@ bindsym F10 workspace 10
 #bindsym $mod+t exec "xfce4-terminal --drop-down --hide-menubar --hide-toolbar"
 
 # Volume control PS: This doesn't seem to work
-bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
-bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
+bindsym X86AudioLowerVolume exec /home/alexis/bin/Volume-Down
+bindsym X86AudioRaiseVolume exec /home/alexis/bin/Volume-Up

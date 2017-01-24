@@ -20,6 +20,7 @@ Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'jacoborus/tender.vim'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -30,6 +31,7 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
+Plugin 'mattn/emmet-vim'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -46,6 +48,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jez/vim-c0'
 Plugin 'jez/vim-ispc'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'lumiliet/vim-twig'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
@@ -75,8 +78,16 @@ set number
 set showcmd
 set incsearch
 set hlsearch
+set expandtab
+set list
+set shiftwidth=4
+set softtabstop=4
 
-syntax on
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+syntax enable
 
 set mouse=a
 
@@ -94,8 +105,8 @@ set background=dark
 "let g:solarized_termcolors=256
 
 " Set the colorscheme
-colorscheme solarized
-
+"colorscheme solarized
+colorscheme tender
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -115,7 +126,8 @@ let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
 
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+let g:airline_theme='tender'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
