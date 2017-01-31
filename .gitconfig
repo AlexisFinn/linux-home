@@ -10,7 +10,7 @@
     pager = true
 [core]
     autocrlf = input
-    editor = nano
+    editor = nvim
     filemode = false
 [alias]
     co = checkout
