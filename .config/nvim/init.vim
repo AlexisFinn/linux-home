@@ -21,8 +21,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jacoborus/tender.vim'
+Plugin 'blueshirts/darcula'
+Plugin 'bkbncn/vim-colorschemes-picker'
 
 " ----- Vim as a programmer's text editor -----------------------------
+Plugin 'tpope/vim-sensible'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-syntastic/syntastic'
@@ -32,10 +35,14 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'derekprior/vim-trimmer'
+Plugin 'valloric/youcompleteme'
+Plugin 'easymotion/vim-easymotion'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " ----- Other text editing features -----------------------------------
 Plugin 'Raimondi/delimitMate'
@@ -95,6 +102,10 @@ set mouse=a
 " in the sign column.
 hi clear SignColumn
 
+" ----- Inform noevim of pyhton path -----
+let g:python_host_prog = '/usr/bin/python'
+let g:pyhton3_host_prog = '/usr/bin/python3'
+
 " ----- Plugin-Specific Settings --------------------------------------
 
 " ----- altercation/vim-colors-solarized settings -----
@@ -106,7 +117,8 @@ set background=dark
 
 " Set the colorscheme
 "colorscheme solarized
-colorscheme tender
+"colorscheme tender
+"colorscheme darcula
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -135,7 +147,6 @@ nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 1
 
-
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
@@ -143,7 +154,6 @@ augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
-
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
@@ -161,11 +171,9 @@ nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
-
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
-
 
 " ----- Raimondi/delimitMate settings -----
 let delimitMate_expand_cr = 1
@@ -181,4 +189,18 @@ augroup END
 " better man page support
 noremap K :SuperMan <cword><CR>
 
+" ----- mattn/emmet-vim settings -----
+" remap expand to Ctrl+E & ,
+let g:user_emmet_leader_key='<C-E>'
+" enable emmet in all modes
+let g:user_emmet_mode='inv'
 
+" ----- alexis/custom -----
+" map new tab to <F9> and Ctrl+Shift+N
+map <F9> :tabnew<CR>
+map <C-N> :tabnew<CR>
+
+map <C-Left> <Home>
+map <C-Right> <End>
+map <C-Up> <PageUp>
+map <C-Down> <PageDown>

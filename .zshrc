@@ -65,7 +65,7 @@ alias logout="i3-msg exit"
 alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
 alias lolll="ls -al | lolcat"
-alias nano = "vim"
+#alias nano="vim"
 
 ddate | lolcat
 cowfortune
