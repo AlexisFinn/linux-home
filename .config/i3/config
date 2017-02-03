@@ -44,7 +44,6 @@ floating_modifier $mod
 bindsym $mod+Return exec sakura
 #bindsym $mod+Return exec termite
 
-
 # start file manager
 #bindsym $mod+m exec mc
 #bindsym $mod+m exec xfe
@@ -162,7 +161,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Lock screen
-bindsym $mod+F12 exec "i3lock -te --image=/home/alexis/Images/archnerd.png"
+bindsym $mod+F12 exec "/home/alexis/bin/lock"
 
 # scratchpad
 #bindsym $mod+p move scratchpad
@@ -262,7 +261,6 @@ assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
 workspace 10 output DP-0
 exec --no-startup-id "xpdf -fullscreen /home/alexis/Documents/vim_cheatsheet.pdf"
 bindsym F10 workspace 10
-
 
 # anamnesis clipboard manager
 #exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"

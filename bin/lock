@@ -1,0 +1,3 @@
+#! /bin/bash
+scrot -z /tmp/lock.png
+i3lock -te -i /tmp/lock.png

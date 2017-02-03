@@ -1,5 +1,5 @@
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alexis/.gem/ruby/2.2.0/bin:/home/alexis/PhpStorm-139.1348/bin:/srv/http/vendor/phpmd/phpmd/src/bin:/srv/http/vendor/squizlabs/php_codesniffer/scripts:/home/alexis/.composer/vendor/bin:/home/alexis/Applications/bin"
-
+export PATH="$PATH:/home/alexis/.gem/ruby/2.4.0/bin"
 # Load Syntax highlighting
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -58,7 +58,7 @@ alias c="clear"
 alias zconf="gedit /home/alexis/.zshrc"
 alias sf="/home/alexis/EDF/rosie/app/console"
 #alias lock="i3lock -te --image=/home/alexis/Images/binary_background_1600.png"
-alias lock="i3lock -te --image=/home/alexis/Images/archnerd.png"
+#alias lock="i3lock -te --image=/home/alexis/Images/archnerd.png"
 alias conkyr="gedit /home/alexis/.conkyrc_right"
 alias conkyl="gedit /home/alexis/.conkyrc_left"
 alias logout="i3-msg exit"

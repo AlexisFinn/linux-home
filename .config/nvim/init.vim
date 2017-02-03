@@ -23,6 +23,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'jacoborus/tender.vim'
 Plugin 'blueshirts/darcula'
 Plugin 'bkbncn/vim-colorschemes-picker'
+Plugin 'miyakogi/seiya.vim'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'tpope/vim-sensible'
@@ -38,6 +39,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'derekprior/vim-trimmer'
 Plugin 'valloric/youcompleteme'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -195,10 +197,15 @@ let g:user_emmet_leader_key='<C-E>'
 " enable emmet in all modes
 let g:user_emmet_mode='inv'
 
+" Seiya transparency config
+" Default value: ['ctermbg']
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+let g:seiya_auto_enable=1
+
 " ----- alexis/custom -----
 " map new tab to <F9> and Ctrl+Shift+N
 map <F9> :tabnew<CR>
-map <C-N> :tabnew<CR>
+noremap <C-W> :q<CR>
 
 map <C-Left> <Home>
 map <C-Right> <End>

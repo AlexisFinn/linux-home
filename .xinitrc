@@ -40,6 +40,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-#compton -d -f --backend glx &
+compton --config /home/alexis/.compton.conf &
 exec i3
 #exec xmonad
