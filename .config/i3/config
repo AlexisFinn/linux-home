@@ -256,6 +256,9 @@ exec --no-startup-id dunst
 # Graphical app menu (menutray)
 exec --no-startup-id "menutray -i"
 
+# Set background
+exec --no-startup-id "feh --bg-scale /home/alexis/Images/vim-shortcuts-dark.png"
+
 # Auto-start vim cheat-sheet in workspace 10
 assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
 workspace 10 output DP-0
