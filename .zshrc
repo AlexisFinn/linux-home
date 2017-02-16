@@ -13,8 +13,6 @@ source /home/alexis/Applications/antigen/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-
-
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git # Lots of git aliases
 ####### antigen bundle Tarrasch/zsh-autoenv # Suppoert for folder specific envirronment settings
@@ -26,7 +24,7 @@ antigen bundle arialdomartini/oh-my-git #Cool git theme
 antigen bundle archlinux # Aliases for pacman and yaourt (if installed)
 antigen bundle ssh-agent # Launch ssh-agent
 antigen bundle history # aliases for showing and searching history
-antigen bundle lol # Some funny aliases (cf https://gist.github.com/norova/848213) 
+antigen bundle lol # Some funny aliases (cf https://gist.github.com/norova/848213)
 antigen bundle systemd # Aliases for systemctl functions
 antigen bundle tig # Aliases for tig
 antigen bundle sudo # Esc twice to add sudo in fornt of any command
@@ -66,6 +64,8 @@ alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
 alias lolll="ls -al | lolcat"
 #alias nano="vim"
+alias v="nvim"
+alias weather="curl -H \"Accept-Language: fr\" wttr.in/paris"
 
 ddate | lolcat
 cowfortune

@@ -7,7 +7,7 @@
 
 workspace_layout tabbed
 default_orientation vertical
-new_window pixel 2
+new_window pixel 0
 workspace 3 output DP-0
 workspace 4 output DP-0
 workspace 1 output DP-1
@@ -256,9 +256,6 @@ exec --no-startup-id dunst
 # Graphical app menu (menutray)
 exec --no-startup-id "menutray -i"
 
-# Set background
-exec --no-startup-id "feh --bg-scale /home/alexis/Images/vim-shortcuts-dark.png"
-
 # Auto-start vim cheat-sheet in workspace 10
 assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
 workspace 10 output DP-0
@@ -275,3 +272,7 @@ bindsym F10 workspace 10
 # Volume control PS: This doesn't seem to work
 bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
 bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
+
+# Set background
+#exec_always --no-startup-id "feh --bg-scale /home/alexis/Images/vim-shortcuts-dark.png"
+exec_always --no-startup-id "nitrogen --restore"
