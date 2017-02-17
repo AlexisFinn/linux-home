@@ -1,5 +1,5 @@
 #export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/alexis/.gem/ruby/2.2.0/bin:/home/alexis/PhpStorm-139.1348/bin:/srv/http/vendor/phpmd/phpmd/src/bin:/srv/http/vendor/squizlabs/php_codesniffer/scripts:/home/alexis/.composer/vendor/bin:/home/alexis/Applications/bin"
-export PATH="$PATH:/home/alexis/.gem/ruby/2.4.0/bin"
+#export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin"
 # Load Syntax highlighting
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -8,7 +8,7 @@ export PATH="$PATH:/home/alexis/.gem/ruby/2.4.0/bin"
 #fi
 
 # Load antigen (zsh package manager)
-source /home/alexis/Applications/antigen/antigen.zsh
+source ~/Applications/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -53,12 +53,12 @@ setopt correct
 
 # Set custom aliases
 alias c="clear"
-alias zconf="gedit /home/alexis/.zshrc"
-alias sf="/home/alexis/EDF/rosie/app/console"
-#alias lock="i3lock -te --image=/home/alexis/Images/binary_background_1600.png"
-#alias lock="i3lock -te --image=/home/alexis/Images/archnerd.png"
-alias conkyr="gedit /home/alexis/.conkyrc_right"
-alias conkyl="gedit /home/alexis/.conkyrc_left"
+alias zconf="gedit ~/.zshrc"
+alias sf="~/EDF/rosie/app/console"
+#alias lock="i3lock -te --image=~/Images/binary_background_1600.png"
+#alias lock="i3lock -te --image=~/Images/archnerd.png"
+alias conkyr="gedit ~/.conkyrc_right"
+alias conkyl="gedit ~/.conkyrc_left"
 alias logout="i3-msg exit"
 alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
