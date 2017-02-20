@@ -1,3 +1,21 @@
+#if __has_include(".extend.Xresources")
+#include ".extend.Xresources"
+#endif
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+XTem*background: #2b2b2b
+Xterm*foreground: #e7e7e7
+XTerm*pointerColor: #16A085
+XTerm*faceName: Fixed
+XTerm*faceSize: 11
+
 ! ------------------------------------------------------------------------------
 ! ! ROFI Color theme
 ! ! ------------------------------------------------------------------------------

@@ -272,6 +272,9 @@ bindsym F10 workspace 10
 # Volume control PS: This doesn't seem to work
 bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
 bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec pavucontrol
 
 # Set background
 #exec_always --no-startup-id "feh --bg-scale /home/alexis/Images/vim-shortcuts-dark.png"
