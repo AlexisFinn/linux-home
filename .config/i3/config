@@ -5,9 +5,12 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-workspace_layout tabbed
+workspace_layout default
 default_orientation vertical
-new_window pixel 0
+new_window pixel 1
+smart_gaps on
+gaps inner 2
+gaps outer 5
 workspace 3 output DP-0
 workspace 4 output DP-0
 workspace 1 output DP-1
@@ -43,6 +46,8 @@ floating_modifier $mod
 #bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec sakura
 bindsym $mod+Return exec termite
+#bindsym $mod+Return exec urxvtc
+#exec --no-startup-id "urxvtd -q -f"
 
 # start file manager
 #bindsym $mod+m exec mc
@@ -199,46 +204,47 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        position top
+  position top
         output DP-0
         font pango:Hack 10
         #mode dock
         modifier $mod
 	status_command i3blocks
 #        status_command i3blocks -c /home/alexis/.i3blocks.conf
-        colors {
-                #separator #268bd2
-                background #002b36
-                #statusline #839496
-                focused_workspace #fdf6e3 #6c71c4 #fdf6e3
-                active_workspace #fdf6e3 #6c71c4 #fdf6e3
-                inactive_workspace #002b36 #586e75 #002b36
-                urgent_workspace #d33682 #d33682 #fdf6e3
-        }
+  colors {
+    separator #666666
+    background #222222
+    statusline #dddddd
+    focused_workspace #0088CC #0088CC #ffffff
+    active_workspace #333333 #333333 #ffffff
+    inactive_workspace #333333 #333333 #888888
+    urgent_workspace #2f343a #900000 #ffffff
+  }
 }
 
 bar {
-        position top
+  position top
         output DP-1
         font pango:Hack 10
         #mode hide
         modifier $mod
         status_command i3blocks -c /home/alexis/.i3blocks-extra.conf
-        colors {
-                #separator #268bd2
-                background #002b36
-                #statusline #839496
-                focused_workspace #fdf6e3 #6c71c4 #fdf6e3
-                active_workspace #fdf6e3 #6c71c4 #fdf6e3
-                inactive_workspace #002b36 #586e75 #002b36
-                urgent_workspace #d33682 #d33682 #fdf6e3
-        }
+  colors {
+    separator #666666
+    background #222222
+    statusline #dddddd
+    focused_workspace #0088CC #0088CC #ffffff
+    active_workspace #333333 #333333 #ffffff
+    inactive_workspace #333333 #333333 #888888
+    urgent_workspace #2f343a #900000 #ffffff
+  }
 }
+# class                 	border  backgr.    text
 
-client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+#
+#
+#
+#
 
 # Configure arandr
 exec_always --no-startup-id /home/alexis/bin/setArandr.sh
@@ -279,3 +285,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Set background
 #exec_always --no-startup-id "feh --bg-scale /home/alexis/Images/vim-shortcuts-dark.png"
 exec_always --no-startup-id "nitrogen --restore"
+
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

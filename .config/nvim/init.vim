@@ -91,6 +91,7 @@ set expandtab
 set list
 set shiftwidth=4
 set softtabstop=4
+set hid
 
 if (has("termguicolors"))
  set termguicolors
