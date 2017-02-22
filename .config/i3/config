@@ -9,7 +9,7 @@ workspace_layout default
 default_orientation vertical
 new_window pixel 1
 smart_gaps on
-gaps inner 2
+gaps inner 5
 gaps outer 5
 workspace 3 output DP-0
 workspace 4 output DP-0
