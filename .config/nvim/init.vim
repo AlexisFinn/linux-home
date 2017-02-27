@@ -40,6 +40,7 @@ Plugin 'derekprior/vim-trimmer'
 Plugin 'valloric/youcompleteme'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'shawncplus/phpcomplete.vim'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -250,11 +251,6 @@ nmap <C-PageDown> :BuffergatorMruCycleNext<cr>
 map <F9> :tabnew<CR>
 map <C-N> :tabnew<CR>
 noremap <C-W> :q<CR>
-
-map <C-Left> <Home>
-map <C-Right> <End>
-map <C-Up> <PageUp>
-map <C-Down> <PageDown>
 
 " use system clipboard
 set clipboard+=unnamedplus
