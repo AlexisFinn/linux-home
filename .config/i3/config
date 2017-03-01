@@ -268,6 +268,11 @@ workspace 10 output DP-0
 exec --no-startup-id "xpdf -fullscreen /home/alexis/Documents/vim_cheatsheet.pdf"
 bindsym F10 workspace 10
 
+# Assign Google Play Music Desktop Player to workspace 11 and use Pause key to get to it
+assign [class="Google Play Music"] 11
+workspace 11 output DP-0
+bindsym Pause workspace 11
+
 # anamnesis clipboard manager
 #exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"
 #bindsym $mod+k exec "anamnesis -b --brief"
