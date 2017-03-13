@@ -258,7 +258,7 @@ set clipboard+=unnamedplus
 " Disable line wrapping
 set nowrap
 set sidescroll=5
-set listchars+=precedes:-,extends:+
+set listchars=precedes:-,extends:+
 
 " Auto save
 set autowriteall

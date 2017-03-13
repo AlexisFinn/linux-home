@@ -40,6 +40,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+# Map recalcitrant caps_lock to escape
+# setxkmap -option caps:escape
+
 compton --config /home/alexis/.compton.conf &
 exec i3
 #exec xmonad
