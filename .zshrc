@@ -64,7 +64,7 @@ alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
 alias lolll="ls -al | lolcat"
 #alias nano="vim"
-alias v="nvim"
+alias v="vim"
 alias weather="curl -H \"Accept-Language: fr\" wttr.in/paris"
 
 ddate | lolcat
