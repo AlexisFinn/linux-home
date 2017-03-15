@@ -67,5 +67,5 @@ alias lolll="ls -al | lolcat"
 alias v="vim"
 alias weather="curl -H \"Accept-Language: fr\" wttr.in/paris"
 
-ddate | lolcat
-cowfortune
+#ddate | lolcat
+#cowfortune
