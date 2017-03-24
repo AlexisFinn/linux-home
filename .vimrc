@@ -41,6 +41,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'joonty/vim-phpqa'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -238,10 +239,10 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_mru_cycle_loop = 1
 
 " Go to the previous buffer open
-nmap <C-PageUp> :BuffergatorMruCyclePrev<cr>
+nmap <C-PageUp> :bn<cr>
 
 " Go to the next buffer open
-nmap <C-PageDown> :BuffergatorMruCycleNext<cr>
+nmap <C-PageDown> :bp<cr>
 
 " View the entire list of buffers open
 "nmap <leader>bl :BuffergatorOpen<cr>
@@ -262,4 +263,11 @@ set listchars=precedes:-,extends:+
 
 " Auto save
 set autowriteall
-:au FocusLost * :wa
+au FocusLost * :wa
+
+" PHPCS and PHPMD
+let g:phpqa_messdetector_ruleset = "/home/alexis/EDF/rosie/phpmd.xml"
+let g:phpqa_codesniffer_args = "--standard=/home/alexis/EDF/rosie/vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml"
+let g:phpqa_codecoverage_autorun = 0
+let g:phpqa_codesniffer_autorun = 0
+let g:phpqa_messdetector_autorun = 0
