@@ -1,5 +1,5 @@
 [user]
-	email = alexis.finn@modisfrance.fr
+    email = alexis.finn@modisfrance.fr
     name = Alexis Finn
 [color]
     ui = true
@@ -31,19 +31,19 @@
     pushtrack = push -u
     files = diff --name-only
 [diff]
-	tool = diffuse
+    tool = diffuse
 [merge]
-	tool = diffuse
+    tool = diffuse
 [http]
-	#proxy = http://127.0.0.1:3128
+    #proxy = http://127.0.0.1:3128
 [credential]
-	helper = cache --timeout=28800
+    helper = cache --timeout=28800
 [push]
-      	default = simple
+    default = simple
 [gui]
-	spellingdictionary = none
-	tabsize = 4
-	fontui = -family \"Source Code Pro\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Source Code Pro for Powerline\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    spellingdictionary = none
+    tabsize = 4
+    fontui = -family \"Source Code Pro\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family \"Source Code Pro for Powerline\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [url "https://"]
-	insteadOf = git://
+    insteadOf = git://

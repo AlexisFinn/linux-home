@@ -37,10 +37,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'derekprior/vim-trimmer'
-Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'shawncplus/phpcomplete.vim'
+" Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'joonty/vim-phpqa'
 
 " ----- Working with Git ----------------------------------------------
