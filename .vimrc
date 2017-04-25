@@ -78,6 +78,8 @@ Plugin 'HTML-AutoCloseTag'
 "Plugin 'tpope/vim-liquid'
 Plugin 'cakebaker/scss-syntax.vim'
 
+" Colemak remap
+"Plugin 'jooize/vim-colemak'
 call vundle#end()
 
 filetype plugin indent on
@@ -271,3 +273,6 @@ let g:phpqa_codesniffer_args = "--standard=/home/alexis/EDF/rosie/vendor/escapes
 let g:phpqa_codecoverage_autorun = 0
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_messdetector_autorun = 0
+
+" NO MORE EX MODE
+nnoremap Q <nop>
