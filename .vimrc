@@ -49,7 +49,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " ----- Other text editing features -----------------------------------
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 
 " ----- man pages, tmux -----------------------------------------------
 Plugin 'jez/vim-superman'
@@ -241,10 +241,10 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_mru_cycle_loop = 1
 
 " Go to the previous buffer open
-nmap <C-PageUp> :bn<cr>
+nmap <C-PageUp> :bp<cr>
 
 " Go to the next buffer open
-nmap <C-PageDown> :bp<cr>
+nmap <C-PageDown> :bn<cr>
 
 " View the entire list of buffers open
 "nmap <leader>bl :BuffergatorOpen<cr>

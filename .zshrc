@@ -54,7 +54,7 @@ setopt correct
 # Set custom aliases
 alias c="clear"
 alias zconf="gedit ~/.zshrc"
-alias sf="~/EDF/rosie/app/console"
+alias sf="~/samsung/samsung-shopdisplay-web/app/console"
 #alias lock="i3lock -te --image=~/Images/binary_background_1600.png"
 #alias lock="i3lock -te --image=~/Images/archnerd.png"
 alias conkyr="gedit ~/.conkyrc_right"
