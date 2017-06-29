@@ -27,8 +27,10 @@ Plugin 'miyakogi/seiya.vim'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'tpope/vim-sensible'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
@@ -211,8 +213,10 @@ let g:seiya_auto_enable=1
 let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors,~/.vim/bundle/vim-colors-solarized/colors,~/.vim/bundle/molokai/colors'
 
 " ----- ctrlP -----
+set wildignore+=*/tests/*,*/node_modules/*,*/node/*
+
 let g:ctrl_p_custom_ignore = {
-    \ 'dir': '\v[\/](\.git|svn|hg)|\vendor)$',
+    \ 'dir': '\v[\/][\.](git|svn|hg|vendor|tests)$',
     \ 'file': '\v.(exe|so|dll|png|jpg|jpeg)$',
 \}
 
@@ -248,6 +252,9 @@ nmap <C-PageDown> :bn<cr>
 
 " View the entire list of buffers open
 "nmap <leader>bl :BuffergatorOpen<cr>
+
+" ----- vimfiler ------
+let g:vimfiler_as_default_explorer = 1
 
 " ----- alexis/custom -----
 " map new tab to <F9> and Ctrl+Shift+N

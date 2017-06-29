@@ -1,12 +1,13 @@
 [Alsa]
-card=default
+card=AudioQuest DragonFly Red v1.0
+channel=PCM
 
 [Notification]
 show_notification=true
 notification_type=0
 
 [StatusIcon]
-stepsize=5
+stepsize=1
 onclick=xterm -e 'alsamixer'
 theme=Default
 use_panel_specific_icons=false
@@ -17,8 +18,8 @@ show_sound_level=true
 use_transparent_background=true
 
 [Hotkeys]
-up_enabled=false
-down_enabled=false
+up_enabled=true
+down_enabled=true
 mute_enabled=false
 up=XF86AudioRaiseVolume
 down=XF86AudioLowerVolume

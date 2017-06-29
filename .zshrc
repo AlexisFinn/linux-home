@@ -64,8 +64,11 @@ alias todo="(cd /srv/http/todos && nohup meteor > /dev/null)"
 alias tig="tig status"
 alias lolll="ls -al | lolcat"
 #alias nano="vim"
-alias v="vim"
+alias v="vim -u /home/alexis/.vimrc"
 alias weather="curl -H \"Accept-Language: fr\" wttr.in/paris"
+alias nxt="playerctl -p spotify next"
+alias prv="playerctl -p spotify previous"
+alias pp="playerctl -p spotify play-pause"
 
 #ddate | lolcat
 #cowfortune
