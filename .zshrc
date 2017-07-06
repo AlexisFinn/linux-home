@@ -28,7 +28,8 @@ antigen bundle lol # Some funny aliases (cf https://gist.github.com/norova/84821
 antigen bundle systemd # Aliases for systemctl functions
 antigen bundle tig # Aliases for tig
 antigen bundle sudo # Esc twice to add sudo in fornt of any command
-antigen bundle web-search # literally google things for command-line
+## conflicts with sp for spotify control
+#antigen bundle web-search # literally google things for command-line
 
 # Syntax highlighting bundle.
 # ALREADY INSTALLED AND LOADED VIA PACMAN/ARCHLINUX
@@ -54,7 +55,7 @@ setopt correct
 # Set custom aliases
 alias c="clear"
 alias zconf="gedit ~/.zshrc"
-alias sf="~/samsung/samsung-shopdisplay-web/app/console"
+alias sf="~/EDF/rosie/bin/console"
 #alias lock="i3lock -te --image=~/Images/binary_background_1600.png"
 #alias lock="i3lock -te --image=~/Images/archnerd.png"
 alias conkyr="gedit ~/.conkyrc_right"

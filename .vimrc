@@ -80,8 +80,8 @@ Plugin 'HTML-AutoCloseTag'
 "Plugin 'tpope/vim-liquid'
 Plugin 'cakebaker/scss-syntax.vim'
 
-" Colemak remap
-"Plugin 'jooize/vim-colemak'
+Plugin 'MuAnsari96/vimify'
+
 call vundle#end()
 
 filetype plugin indent on

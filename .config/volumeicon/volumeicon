@@ -7,7 +7,7 @@ show_notification=true
 notification_type=0
 
 [StatusIcon]
-stepsize=1
+stepsize=3
 onclick=xterm -e 'alsamixer'
 theme=Default
 use_panel_specific_icons=false
