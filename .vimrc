@@ -48,7 +48,7 @@ Plugin 'joonty/vim-phpqa'
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " ----- Other text editing features -----------------------------------
 " Plugin 'Raimondi/delimitMate'

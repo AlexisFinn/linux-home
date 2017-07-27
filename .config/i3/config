@@ -11,10 +11,10 @@ new_window pixel 1
 smart_gaps on
 gaps inner 5
 gaps outer 5
-workspace 3 output HDMI-1
-workspace 4 output HDMI-1
-workspace 1 output VGA-1
-workspace 2 output VGA-1
+workspace 3 output DP-0
+workspace 4 output DP-0
+workspace 1 output DP-1
+workspace 2 output DP-1
 #workspace 5 output DVI-I-0
 #workspace 6 output DVI-I-0
 
@@ -58,6 +58,11 @@ bindsym $mod+m exec spacefm
 
 # Start calculator
 bindsym XF86Calculator exec calculator
+
+# set music player controls
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
 
 # kill focused window
 bindsym Ctrl+Shift+q kill
@@ -204,11 +209,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   position top
-        output VGA-1
+        output DP-1
         font pango:Hack 10
         #mode dock
         modifier $mod
-	status_command i3blocks
+        status_command i3blocks
 #        status_command i3blocks -c /home/alexis/.i3blocks.conf
   colors {
     separator #666666
@@ -223,7 +228,7 @@ bar {
 
 bar {
   position top
-        output HDMI-1
+        output DP-0
         font pango:Hack 10
         #mode hide
         modifier $mod
@@ -256,15 +261,15 @@ exec --no-startup-id dunst
 exec --no-startup-id "menutray -i"
 
 # Auto-start vim cheat-sheet in workspace 10
-assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
-workspace 10 output DP-0
-exec --no-startup-id "xpdf -fullscreen /home/alexis/Documents/vim_cheatsheet.pdf"
-bindsym F10 workspace 10
+#assign [class="Xpdf" title="Xpdf: /home/alexis/Documents/vim_cheatsheet.pdf"] 10
+#workspace 10 output DP-0
+#exec --no-startup-id "xpdf -fullscreen /home/alexis/Documents/vim_cheatsheet.pdf"
+#bindsym F10 workspace 10
 
 # Assign Google Play Music Desktop Player to workspace 11 and use Pause key to get to it
-assign [class="Google Play Music"] 11
-workspace 11 output DP-0
-bindsym Pause workspace 11
+#assign [class="Google Play Music"] 11
+#workspace 11 output DP-0
+#bindsym Pause workspace 11
 
 # anamnesis clipboard manager
 #exec_always --no-startup-id "anamnesis --start && anamnesis --cleanup"
@@ -274,10 +279,10 @@ bindsym Pause workspace 11
 #bindsym $mod+t exec "xfce4-terminal --drop-down --hide-menubar --hide-toolbar"
 
 # Volume control PS: This doesn't seem to work
-bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
-bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
+#bindsym $mod+F2 exec /home/alexis/bin/Volume-Down
+#bindsym $mod+F3 exec /home/alexis/bin/Volume-Up
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # Set background
