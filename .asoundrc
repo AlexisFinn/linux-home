@@ -1,0 +1,37 @@
+#pcm.!default {
+#    format S24_3LE
+#    rate 96000
+#    type hw
+#    card 2
+#    device 0
+#}
+
+pcm.!default {
+    type plug
+    slave dragonfly-simpleconvert
+}
+
+pcm_slave.dragonfly-noconvert {
+    pcm "hw:2,0"
+}
+
+pcm_slave.dragonfly-fullconvert {
+    pcm "hw:2,0"
+    format S24_3LE
+    channels 2
+    rate 96000
+}
+
+pcm_slave.dragonfly-simpleconvert {
+    pcm "hw:2,0"
+    rate 48000
+}
+
+#pcm.pulse {
+#    type pulse
+#}
+
+ctl.mixer0 {
+    type hw
+    card 0
+}
