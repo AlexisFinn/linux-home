@@ -3,81 +3,86 @@
 "
 " How I configure Vim :P
 "
-
 " Gotta be first
 set nocompatible
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
+" Comment/uncomment multiple lines with <leader>c<space>
+Plug 'preservim/nerdcommenter'
+" formating for various filetypes
+Plug 'prettier/vim-prettier', {
+    \'do': 'yarn install',
+    \'for': ['typescript', 'html', 'javascript', 'css', 'scss', 'yaml', 'json']
+\}
+" ctags manager for autocomplete
+Plug 'ludovicchabant/vim-gutentags'
+" emmet html abbreviations expansion for vim
+Plug 'mattn/emmet-vim'
+" php comlpetion, refactoring and introspection
+Plug 'phpactor/phpactor'
+" allows to delete a buffer without closing the window
+Plug 'rbgrouleff/bclose.vim'
+" quick filtering of results
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" quickly move around a file using <leader><leader>
+Plug 'easymotion/vim-easymotion'
+" Show trailing whitespaces in red
+Plug 'ntpeters/vim-better-whitespace'
+" Indentation guides
+Plug 'nathanaelkane/vim-indent-guides'
+" vim Git wrapper
+Plug 'tpope/vim-fugitive'
+" syntax and snippets for dockerfiles
+Plug 'ekalinin/Dockerfile.vim'
+" show VCS changes in sign column beside opened file
+Plug 'mhinz/vim-signify'
+" auto-close braces etc..
+Plug 'Raimondi/delimitMate'
+" read and process .editorconfig file
+Plug 'editorconfig/editorconfig-vim'
+" a set of default configs and fixes to start of with
+Plug 'tpope/vim-sensible'
+" Powerfull intellisense for vim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" auto trim trailing whitespace on save
+Plug 'derekprior/vim-trimmer'
+" Lightweight status bar
+Plug 'mengelbrecht/lightline-bufferline'
+" Ranger integration into vim
+Plug 'francoiscabrol/ranger.vim'
+" Display current file tags in side window
+Plug 'majutsushi/tagbar'
+" Highligt the enclosing or matching xml/html tags
+Plug 'Valloric/MatchTagAlways'
+" Autocorrect syntax using php-cs-fixer
+Plug 'stephpy/vim-php-cs-fixer'
+" Generate phpdoc blocks
+Plug 'sumpygump/php-documentor/vim'
 
-" ----- Making Vim look good ------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'jacoborus/tender.vim'
-Plugin 'blueshirts/darcula'
-Plugin 'sunuslee/vim-plugin-random-colorscheme-picker'
-Plugin 'miyakogi/seiya.vim'
+" ----------- SYNTAX -------------
+Plug 'evidens/vim-twig'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
 
-" ----- Vim as a programmer's text editor -----------------------------
-Plugin 'tpope/vim-sensible'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/a.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'derekprior/vim-trimmer'
-Plugin 'valloric/youcompleteme'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'shawncplus/phpcomplete.vim'
+" --------- Color Schemes -----------
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'dracula/vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
 
-" ----- Working with Git ----------------------------------------------
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-" ----- Other text editing features -----------------------------------
-Plugin 'Raimondi/delimitMate'
-
-" ----- man pages, tmux -----------------------------------------------
-Plugin 'jez/vim-superman'
-Plugin 'christoomey/vim-tmux-navigator'
-
-" ----- Syntax plugins ------------------------------------------------
-Plugin 'jez/vim-c0'
-Plugin 'jez/vim-ispc'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'lumiliet/vim-twig'
-
-" ---- Extras/Advanced plugins ----------------------------------------
-" Highlight and strip trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
-" Easily surround chunks of text
-"Plugin 'tpope/vim-surround'
-" Align CSV files at commas, align Markdown tables, and more
-"Plugin 'godlygeek/tabular'
-" Automaticall insert the closing HTML tag
-Plugin 'HTML-AutoCloseTag'
-" Make tmux look like vim-airline (read README for extra instructions)
-"Plugin 'edkolev/tmuxline.vim'
-" All the other syntax plugins I use
-"Plugin 'ekalinin/Dockerfile.vim'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'tpope/vim-liquid'
-Plugin 'cakebaker/scss-syntax.vim'
-
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 
@@ -120,9 +125,11 @@ set background=dark
 "let g:solarized_termcolors=256
 
 " Set the colorscheme
-"colorscheme solarized
+"colorscheme palenight
 "colorscheme tender
-"colorscheme darcula
+"colorscheme nord
+"colorscheme solarized
+colorscheme dracula
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -144,12 +151,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Use the solarized theme for the Airline status bar
 let g:airline_theme='solarized'
 "let g:airline_theme='tender'
-
-" ----- jistr/vim-nerdtree-tabs -----
-" Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-" To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 1
 
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
@@ -208,8 +209,10 @@ let g:seiya_auto_enable=1
 let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors,~/.vim/bundle/vim-colors-solarized/colors,~/.vim/bundle/molokai/colors'
 
 " ----- ctrlP -----
+set wildignore+=*/tests/*,*/node_modules/*,*/node/*
+
 let g:ctrl_p_custom_ignore = {
-    \ 'dir': '\v[\/](\.git|svn|hg)|\vendor)$',
+    \ 'dir': '\v[\/][\.](git|svn|hg|vendor|tests)$',
     \ 'file': '\v.(exe|so|dll|png|jpg|jpeg)$',
 \}
 
@@ -238,19 +241,99 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_mru_cycle_loop = 1
 
 " Go to the previous buffer open
-nmap <C-PageUp> :BuffergatorMruCyclePrev<cr>
+nmap <C-PageUp> :bp<cr>
 
 " Go to the next buffer open
-nmap <C-PageDown> :BuffergatorMruCycleNext<cr>
+nmap <C-PageDown> :bn<cr>
 
 " View the entire list of buffers open
 "nmap <leader>bl :BuffergatorOpen<cr>
+
+" ----- vimfiler ------
+let g:vimfiler_as_default_explorer = 1
+
+" ----- NERDCommenter -----
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+" ----- MatchTagAlways -----
+let g:mta_use_matchparen_group = 1
+let g:mta_filetypes = {'html' : 1,'html.twig' : 1,'vue' : 1,'js' : 1,'xhtml' : 1,'xml' : 1}
+
+" ----- NERDtree -----
+" Open by default
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in")  | NERDTree | endif
+" Auto close nerdtree when open file
+let NERDTreeQuitOnOpen = 1
+" Auto close tab if only nerdtree remaining
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Auto delete buffer if file is deleted in nerdtree
+let NERDTreeAutoDeleteBuffer = 1
+" Pretty
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" ----- Vim-Prettier -----
+
+" max line length that prettier will wrap on
+" Prettier default: 80
+let g:prettier#config#print_width = 120
+
+" number of spaces per indentation level
+" Prettier default: 2
+let g:prettier#config#tab_width = 4
+
+" use tabs over spaces
+" Prettier default: false
+let g:prettier#config#use_tabs = 'false'
+
+" print semicolons
+" Prettier default: true
+let g:prettier#config#semi = 'true'
+
+" single quotes over double quotes
+" Prettier default: false
+let g:prettier#config#single_quote = 'true'
+
+" print spaces between brackets
+" Prettier default: true
+let g:prettier#config#bracket_spacing = 'false'
+
+" put > on the last line instead of new line
+" Prettier default: false
+" let g:prettier#config#jsx_bracket_same_line = 'false'
+
+" avoid|always
+" Prettier default: avoid
+" let g:prettier#config#arrow_parens = 'always'
+
+" none|es5|all
+" Prettier default: none
+" let g:prettier#config#trailing_comma = 'all'
+
+" flow|babylon|typescript|css|less|scss|json|graphql|markdown
+" Prettier default: babylon
+" let g:prettier#config#parser = 'flow'
+
+" cli-override|file-override|prefer-file
+" let g:prettier#config#config_precedence = 'prefer-file'
+
+" always|never|preserve
+let g:prettier#config#prose_wrap = 'preserve'
+
+" css|strict|ignore
+" let g:prettier#config#html_whitespace_sensitivity = 'css'
 
 " ----- alexis/custom -----
 " map new tab to <F9> and Ctrl+Shift+N
 map <F9> :tabnew<CR>
 map <C-N> :tabnew<CR>
 noremap <C-W> :q<CR>
+map <A-1> :NERDTreeToggle<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
+vmap <C-c> \c <CR>
 
 " use system clipboard
 set clipboard+=unnamedplus
@@ -263,3 +346,20 @@ set listchars=precedes:-,extends:+
 " Auto save
 set autowriteall
 au FocusLost * :wa
+
+" PHPCS and PHPMD
+" let g:phpqa_messdetector_ruleset = "/home/alexis/EDF/rosie/phpmd.xml"
+" let g:phpqa_codesniffer_args = "--standard=/home/alexis/EDF/rosie/vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml"
+let g:phpqa_codecoverage_autorun = 0
+let g:phpqa_codesniffer_autorun = 0
+let g:phpqa_messdetector_autorun = 0
+
+" NO MORE EX MODE
+nnoremap Q <nop>
+
+" Remap buffer close
+cnoreabbrev dd bd
+:command W w
+
+" configure custom indent per filetype
+autocmd FileType vue setlocal shiftwidth=4 tabstop=4
