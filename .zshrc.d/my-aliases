@@ -1,0 +1,25 @@
+alias c=clear
+alias C=qalc
+alias calculator=qalculate
+alias tig='tig status'
+alias weather='curl -H "Accept-Language: fr" wttr.in/paris'
+alias vim='/home/alexis/bin/nvim.appimage'
+alias nvim='/home/alexis/bin/nvim.appimage'
+alias sudo='sudo -EH'
+alias net='nmtui'
+alias dup='docker-compose up -d'
+alias ddown='docker-compose down'
+alias searchfor='grep -rnw . -e'
+alias lognav=lnav
+alias top='ytop -c monokai -s -a -m'
+alias fulltop='ytop -c vice -s -r 2'
+alias cat='bat'
+alias cam='qv4l2'
+
+function chpwd() {
+    if [ -r $PWD/bash_aliases.sh ]; then
+        source $PWD/bash_aliases.sh
+    else
+        unalias -m 'bb-*'
+    fi
+}

@@ -6,15 +6,15 @@
 " Gotta be first
 set nocompatible
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 filetype off
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Comment/uncomment multiple lines with <leader>c<space>
 Plug 'preservim/nerdcommenter'
@@ -23,6 +23,8 @@ Plug 'prettier/vim-prettier', {
     \'do': 'yarn install',
     \'for': ['typescript', 'html', 'javascript', 'css', 'scss', 'yaml', 'json']
 \}
+" Lightweight and simple status line
+Plug 'itchyny/lightline.vim'
 " ctags manager for autocomplete
 Plug 'ludovicchabant/vim-gutentags'
 " emmet html abbreviations expansion for vim
@@ -67,8 +69,11 @@ Plug 'Valloric/MatchTagAlways'
 " Autocorrect syntax using php-cs-fixer
 Plug 'stephpy/vim-php-cs-fixer'
 " Generate phpdoc blocks
-Plug 'sumpygump/php-documentor/vim'
-
+Plug 'sumpygump/php-documentor-vim'
+" Fuzzy find and open with Ctrl+p
+Plug 'ctrlpvim/ctrlp.vim'
+" integrate nnn as file manager
+Plug 'mcchrish/nnn.vim'
 " ----------- SYNTAX -------------
 Plug 'evidens/vim-twig'
 Plug 'cakebaker/scss-syntax.vim'
@@ -98,14 +103,13 @@ set list
 set shiftwidth=4
 set softtabstop=4
 set hid
+set mouse=a
 
 if (has("termguicolors"))
  set termguicolors
 endif
 
 syntax enable
-
-set mouse=a
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
@@ -115,9 +119,7 @@ hi clear SignColumn
 let g:python_host_prog = '/usr/bin/python'
 let g:pyhton3_host_prog = '/usr/bin/python3'
 
-" ----- Plugin-Specific Settings --------------------------------------
-
-" ----- altercation/vim-colors-solarized settings -----
+" ----- Colorscheme settings -----
 " Toggle this to "light" for light colorscheme
 set background=dark
 
@@ -131,28 +133,174 @@ set background=dark
 "colorscheme solarized
 colorscheme dracula
 
-" ----- bling/vim-airline settings -----
-" Always show statusbar
-set laststatus=2
-let g:airline_section_b = '%{fugitive#head()}'
-" Fancy arrow symbols, requires a patched font
-" To install a patched font, run over to
-"     https://github.com/abertsch/Menlo-for-Powerline
-" download all the .ttf files, double-click on them and click "Install"
-" Finally, uncomment the next line
-let g:airline_powerline_fonts = 1
+" ----- Plugin-Specific Settings --------------------------------------
+" ----- Coc-vim -----
+" TextEdit might fail if hidden is not set.
+set hidden
 
-" Show PASTE if in paste mode
-let g:airline_detect_paste=1
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
 
-" Show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
+" Give more space for displaying messages.
+set cmdheight=2
 
-" Use the solarized theme for the Airline status bar
-let g:airline_theme='solarized'
-"let g:airline_theme='tender'
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
-" ----- scrooloose/syntastic settings -----
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" ----- vim-indent-guides -----
+let g:indent_guides_enable_on_vim_startup = 1
+
+" ----- Gutentags -----
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['.editorconfig']
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags')
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+let g:gutentags_ctags_extra_args = [
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
+
+let g:gutentags_trace = 0
+
+nmap <silent> gd :CtrlPTag<cr><c-\>w
+
+" ----- syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
@@ -160,25 +308,11 @@ augroup mySyntastic
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
-" ----- xolox/vim-easytags settings -----
-" Where to look for tags files
-set tags=./tags;,~/.vimtags
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
-
-" ----- airblade/vim-gitgutter settings -----
-" In vim-airline, only display "hunks" if the diff is non-zero
-let g:airline#extensions#hunks#non_zero_only = 1
 
 " ----- Raimondi/delimitMate settings -----
 let delimitMate_expand_cr = 1
@@ -190,23 +324,17 @@ augroup mydelimitMate
   au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 
-" ----- jez/vim-superman settings -----
-" better man page support
-noremap K :SuperMan <cword><CR>
+" ----- php_cs_fixer -----
+let g:php_cs_fixer_cache='.php_cs.cache'
+let g:php_cs_fixer_config_file='.php_cs'
+" auto fix on save
+autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
 " ----- mattn/emmet-vim settings -----
 " remap expand to Ctrl+E & ,
 let g:user_emmet_leader_key='<C-E>'
 " enable emmet in all modes
 let g:user_emmet_mode='inv'
-
-" Seiya transparency config
-" Default value: ['ctermbg']
-let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-let g:seiya_auto_enable=1
-
-" ----- sunuslee/vim-plugin-random-colorscheme-picker -----
-let g:colorscheme_user_path = '~/.vim/bundle/vim-colorschemes/colors,~/.vim/bundle/vim-colors-solarized/colors,~/.vim/bundle/molokai/colors'
 
 " ----- ctrlP -----
 set wildignore+=*/tests/*,*/node_modules/*,*/node/*
@@ -222,35 +350,12 @@ let g:ctrl_p_custom_ignore = {
 let g:ctrlp_working_path_mode = 'r'
 
 " Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
+nmap <C-p> :CtrlP<cr>
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
-
-" ----- Buffergator -----
-
-" Use the right side of the screen
-let g:buffergator_viewport_split_policy = 'R'
-
-" I want my own keymappings...
-let g:buffergator_suppress_keymaps = 1
-
-" Looper buffers
-"let g:buffergator_mru_cycle_loop = 1
-
-" Go to the previous buffer open
-nmap <C-PageUp> :bp<cr>
-
-" Go to the next buffer open
-nmap <C-PageDown> :bn<cr>
-
-" View the entire list of buffers open
-"nmap <leader>bl :BuffergatorOpen<cr>
-
-" ----- vimfiler ------
-let g:vimfiler_as_default_explorer = 1
 
 " ----- NERDCommenter -----
 let g:NERDDefaultAlign = 'left'
@@ -261,78 +366,60 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = {'html' : 1,'html.twig' : 1,'vue' : 1,'js' : 1,'xhtml' : 1,'xml' : 1}
 
-" ----- NERDtree -----
-" Open by default
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in")  | NERDTree | endif
-" Auto close nerdtree when open file
-let NERDTreeQuitOnOpen = 1
-" Auto close tab if only nerdtree remaining
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Auto delete buffer if file is deleted in nerdtree
-let NERDTreeAutoDeleteBuffer = 1
-" Pretty
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
 " ----- Vim-Prettier -----
 
 " max line length that prettier will wrap on
-" Prettier default: 80
 let g:prettier#config#print_width = 120
 
 " number of spaces per indentation level
-" Prettier default: 2
 let g:prettier#config#tab_width = 4
 
 " use tabs over spaces
-" Prettier default: false
 let g:prettier#config#use_tabs = 'false'
 
 " print semicolons
-" Prettier default: true
 let g:prettier#config#semi = 'true'
 
 " single quotes over double quotes
-" Prettier default: false
 let g:prettier#config#single_quote = 'true'
 
 " print spaces between brackets
-" Prettier default: true
 let g:prettier#config#bracket_spacing = 'false'
-
-" put > on the last line instead of new line
-" Prettier default: false
-" let g:prettier#config#jsx_bracket_same_line = 'false'
-
-" avoid|always
-" Prettier default: avoid
-" let g:prettier#config#arrow_parens = 'always'
-
-" none|es5|all
-" Prettier default: none
-" let g:prettier#config#trailing_comma = 'all'
-
-" flow|babylon|typescript|css|less|scss|json|graphql|markdown
-" Prettier default: babylon
-" let g:prettier#config#parser = 'flow'
-
-" cli-override|file-override|prefer-file
-" let g:prettier#config#config_precedence = 'prefer-file'
 
 " always|never|preserve
 let g:prettier#config#prose_wrap = 'preserve'
 
-" css|strict|ignore
-" let g:prettier#config#html_whitespace_sensitivity = 'css'
+" ----- lightline -----
+set laststatus=2
+set showtabline=2
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ], ['cocst'] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers',
+      \   'gutentags': 'gutentags#statusline',
+      \   'cocst': 'coc#status'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+\ }
+" auto-update lightline on coc change
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
+nmap <C-PageUp> :bp<CR>
+nmap <C-PageDown> :bn<CR>
 " ----- alexis/custom -----
-" map new tab to <F9> and Ctrl+Shift+N
-map <F9> :tabnew<CR>
+"map <F9> :NnnPicker<CR>
+map <F9> :RangerCurrentFile<CR>
 map <C-N> :tabnew<CR>
 noremap <C-W> :q<CR>
-map <A-1> :NERDTreeToggle<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
 vmap <C-c> \c <CR>
 
 " use system clipboard
@@ -346,13 +433,6 @@ set listchars=precedes:-,extends:+
 " Auto save
 set autowriteall
 au FocusLost * :wa
-
-" PHPCS and PHPMD
-" let g:phpqa_messdetector_ruleset = "/home/alexis/EDF/rosie/phpmd.xml"
-" let g:phpqa_codesniffer_args = "--standard=/home/alexis/EDF/rosie/vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml"
-let g:phpqa_codecoverage_autorun = 0
-let g:phpqa_codesniffer_autorun = 0
-let g:phpqa_messdetector_autorun = 0
 
 " NO MORE EX MODE
 nnoremap Q <nop>

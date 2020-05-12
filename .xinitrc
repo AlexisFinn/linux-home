@@ -30,7 +30,7 @@ fi
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 
-setxkbmap ie
+setxkbmap fr
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
@@ -43,6 +43,6 @@ fi
 # Map recalcitrant caps_lock to escape
 # setxkmap -option caps:escape
 
-compton --config /home/alexis/.compton.conf &
+#compton --config /home/alexis/.compton.conf &
 exec i3
 #exec xmonad
