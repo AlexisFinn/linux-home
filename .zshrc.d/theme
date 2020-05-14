@@ -64,7 +64,7 @@
 #zgen oh-my-zsh themes/nicoulaj
 #zgen oh-my-zsh themes/norm
 #zgen oh-my-zsh themes/philips
-#zgen oh-my-zsh themes/pygmalion
+zgen oh-my-zsh themes/pygmalion
 #zgen oh-my-zsh themes/risto
 #zgen oh-my-zsh themes/rixius
 #zgen oh-my-zsh themes/rkj-repos
@@ -88,7 +88,7 @@
 #zgen oh-my-zsh themes/wuffers
 #zgen oh-my-zsh themes/xiong-chiamiov
 #zgen oh-my-zsh themes/xiong-chiamiov-plus
-zgen oh-my-zsh themes/ys
+#zgen oh-my-zsh themes/ys
 #zgen oh-my-zsh themes/zhann
 # --------- EXTERNAL THEMES ---------- #
 

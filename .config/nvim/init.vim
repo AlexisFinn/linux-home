@@ -74,6 +74,8 @@ Plug 'sumpygump/php-documentor-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " integrate nnn as file manager
 Plug 'mcchrish/nnn.vim'
+" markdown live preview plugin
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " ----------- SYNTAX -------------
 Plug 'evidens/vim-twig'
 Plug 'cakebaker/scss-syntax.vim'
@@ -105,11 +107,23 @@ set softtabstop=4
 set hid
 set mouse=a
 
+set number relativenumber
 if (has("termguicolors"))
  set termguicolors
 endif
 
 syntax enable
+
+" ----- Window title settings -----
+function! GetProject()
+  return substitute(getcwd(), '.*\/', '', 'g')
+endfunction
+
+set title
+set titlestring=VIM:
+set titlestring+=\ %{GetProject()}
+"set titlestring+=\ -\ %t:L.%l
+"set titlestring+=\ --\ %{FugitiveStatusline()}
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
@@ -355,7 +369,7 @@ nmap <C-p> :CtrlP<cr>
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
+
 
 " ----- NERDCommenter -----
 let g:NERDDefaultAlign = 'left'
@@ -395,7 +409,7 @@ set showtabline=2
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ], ['cocst'] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'git', 'modified' ], ['cocst'] ]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -405,6 +419,9 @@ let g:lightline = {
       \   'buffers': 'lightline#bufferline#buffers',
       \   'gutentags': 'gutentags#statusline',
       \   'cocst': 'coc#status'
+      \ },
+      \ 'component_function': {
+      \   'git': 'FugitiveStatusline'
       \ },
       \ 'component_type': {
       \   'buffers': 'tabsel'
@@ -421,6 +438,12 @@ map <F9> :RangerCurrentFile<CR>
 map <C-N> :tabnew<CR>
 noremap <C-W> :q<CR>
 vmap <C-c> \c <CR>
+
+" Remap split window switching
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " use system clipboard
 set clipboard+=unnamedplus
@@ -440,6 +463,9 @@ nnoremap Q <nop>
 " Remap buffer close
 cnoreabbrev dd bd
 :command W w
+
+" Add a command to reformat json
+com! FormatJSON %!python -m json.tool
 
 " configure custom indent per filetype
 autocmd FileType vue setlocal shiftwidth=4 tabstop=4
